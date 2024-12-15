@@ -6,11 +6,11 @@ import { GoogleAuthGuard } from 'src/guards/google-guard';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Get()
+  @Get('/google')
   @UseGuards(GoogleAuthGuard)
   async googleAuth() {}
 
-  @Get('auth/google/callback')
+  @Get('/google/callback')
   @UseGuards(GoogleAuthGuard)
   googleAuthRedirect(@Req() req) {
     return this.authService.googleLogin(req);
